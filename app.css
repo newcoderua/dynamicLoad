@@ -1,0 +1,28 @@
+.body {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  width: 400px;
+  height: 400px;
+}
+
+.hey {
+  position: fixed;
+}
+
+body {
+  font-size: 26px;
+  font-family: sans-serif;
+  color: #ed6636;
+  border: 1px solid black;
+  margin-left: 5px;
+  padding-left: 8px;
+  background-color: #fff0d3;
+}
+
+#num-of-gifs {
+  font-size: 30px;
+  color: black;
+}
