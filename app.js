@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", function(e) {
-  //
+  //using animate function, I am making sure that page would
+  // be scrolled back to the top when I update my page
   $(document).ready(function(){
       $('html').animate({scrollTop:0}, 1);
       $('body').animate({scrollTop:0}, 1);
   });
-  //
+  //simple ajax request, using giphy.com API's to fetch gifs.
+  //I like dogs, so I decied to fetch funny+dogs
   $.ajax = function(options) {
 
     const defaults = {
@@ -31,7 +33,10 @@ document.addEventListener("DOMContentLoaded", function(e) {
     sender.send(settings.data);
   };
 
-
+  //so when user starts to scroll I want to send ajax request
+  //using isELementInviewPort I am checking if image placeholder
+  //visible to user.
+  //If it is visible I want append fetched gifs.
   document.addEventListener('scroll', (e) => {
     $('#num-of-gifs')['0'].innerText = $('img').length - 1;
     e.preventDefault();
@@ -39,10 +44,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
     if (window.resp === undefined) {
       return;
     }
-    // let innerHeightOfImages = $('img')[0].height + $('img')[1].height;
     function isElementInViewport (el) {
 
-        //special bonus for those using jQuery
         if (typeof jQuery === "function" && el instanceof jQuery) {
             el = el[0];
         }
@@ -60,12 +63,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
     let randomElement = window.resp.data[Math.floor(Math.random()*window.resp.data.length)];
 
     if (isElementInViewport($('#placeholder-1'))) {
-      console.log('placeholder-1 is invisible now');
+      // console.log('placeholder-1 is invisible now');
       $('#placeholder-1').remove();
       $('.main').append(`<div><img src="${randomElement.images.downsized.url}" alt="" /></div>`)
       $('.main').append('<div><img id="placeholder-1" src="http://99px.ru/sstorage/53/2013/05/tmb_69340_5376.jpg" width="680" /></div>')
     } else {
-      console.log('placeholder-1 is visible now');
+      // console.log('placeholder-1 is visible now');
     }
   });
 });
